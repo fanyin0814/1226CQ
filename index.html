@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高城 & 高雀 | 囚城与雀</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ==================== Loading 页面 ==================== -->
+    <div id="loader">
+        <div class="scanlines"></div>
+        <div class="fate-threads-container">
+            <svg class="fate-threads" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path class="thread thread-1" d="M10,20 Q30,40 50,50 Q70,60 90,80" />
+                <path class="thread thread-2" d="M90,15 Q70,35 50,50 Q30,65 10,85" />
+                <path class="thread thread-3" d="M30,50 Q50,30 70,50 Q50,70 30,50" />
+                <path class="thread thread-4" d="M20,40 Q50,45 80,40" />
+                <path class="thread thread-4" d="M20,60 Q50,55 80,60" />
+            </svg>
+            <div class="thread-intersection intersection-1"></div>
+            <div class="thread-intersection intersection-2"></div>
+            <div class="thread-intersection intersection-3"></div>
+        </div>
+
+        <div class="loading-content">
+            <div class="mil-header">
+                <span class="mil-badge">PLA · 84集团军</span>
+                <span class="mil-code">档案调取系统 v2.007</span>
+            </div>
+
+            <div class="main-display">
+                <div class="subject-info">
+                    <div class="subject-row">
+                        <span class="label">SUBJECT_A:</span>
+                        <span class="value" id="subject-a">高城 / 1980.08</span>
+                    </div>
+                    <div class="subject-row">
+                        <span class="label">SUBJECT_B:</span>
+                        <span class="value" id="subject-b">高雀 / 1983.08</span>
+                    </div>
+                </div>
+                
+                <div class="year-display">
+                    <span class="year-label">TIMELINE</span>
+                    <span class="year-value" id="year-counter">1983</span>
+                </div>
+
+                <div class="status-bar">
+                    <div class="progress-track">
+                        <div class="progress-fill" id="progress-bar"></div>
+                    </div>
+                    <span class="progress-text" id="loading-percent">0%</span>
+                </div>
+            </div>
+
+            <div class="mil-footer">
+                <span class="status-text" id="status-text">正在建立连接...</span>
+                <span class="classification">机密等级: 绝密</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== 背景图 ==================== -->
+    <div id="hero-background">
+        <img src="hero.jpg" alt="背景插图" id="hero-img">
+        <div class="hero-overlay"></div>
+    </div>
+
+    <!-- ==================== 主内容区 ==================== -->
+    <main id="main-content">
+        
+        <!-- 首页导航 -->
+        <section id="landing-menu">
+            <div class="hero-title">
+                <h1 class="matisse-font">城 · 雀</h1>
+                <p class="subtitle">"一身两头，同生共死。"</p>
+            </div>
+            <nav id="main-nav">
+                <ul>
+                    <li onclick="switchTab('story')">主线剧情</li>
+                    <li onclick="switchTab('profiles')">人物档案</li>
+                    <li onclick="switchTab('gallery')">影像画廊</li>
+                    <li class="locked" onclick="alert('权限不足：平行世界线路未解锁')">其他 PARO</li>
+                </ul>
+            </nav>
+            <div class="scroll-hint" onclick="switchTab('story')">
+                <span>向下滑动查看时间线</span>
+                <div class="arrow"></div>
+            </div>
+
+            <!-- 作者信息 -->
+            <div class="author-footer">
+                <div class="author-line"></div>
+                <div class="author-info">
+                    <span class="author-label">档案整理</span>
+                    <span class="author-name">@今夜你我不谈论月亮和宇宙</span>
+                </div>
+                <div class="author-links">
+                    <a href="https://www.weibo.com/u/2289443503" target="_blank" class="social-link weibo">
+                        <span class="link-icon">微</span>
+                        <span class="link-text">微博</span>
+                    </a>
+                    <a href="https://archiveofourown.org/users/Sparrow_Gao/pseuds/Sparrow_Gao" target="_blank" class="social-link ao3">
+                        <span class="link-icon">A</span>
+                        <span class="link-text">AO3</span>
+                    </a>
+                </div>
+                <div class="author-line"></div>
+            </div>
+        </section>
+
+        <!-- ==================== 视图A: 主线剧情 - 时间轴 ==================== -->
+        <div id="story-view" class="view-section">
+            <div class="back-home" onclick="backToHome()">← RETURN</div>
+            
+            <!-- 时间线控制面板 -->
+            <div class="timeline-controls">
+                <button class="reveal-all-btn" onclick="toggleRevealAll()">
+                    <span class="btn-icon">◉</span>
+                    <span class="btn-text">一键展开故事</span>
+                </button>
+                <p class="control-hint">点击展开所有故事卡片，再次点击收起</p>
+            </div>
+            
+            <div class="timeline-wrapper">
+                <div class="timeline-axis"></div>
+                <div class="timeline-pulse"></div>
+
+                <!-- ===== 1980 ===== -->
+                <div class="year-marker">
+                    <span class="year">1980</span>
+                    <span class="year-event">高城出生 / 将门虎子</span>
+                </div>
+
+                <!-- ===== 1983 ===== -->
+                <div class="year-marker">
+                    <span class="year">1983</span>
+                    <span class="year-event">高雀出生 / 雌鹰初啼</span>
+                </div>
+
+                <!-- 童年故事节点 -->
+                <div class="story-node right">
+                    <div class="node-dot"></div>
+                    <div class="node-card">
+                        <div class="card-image" onclick="openImageModal('g3.jpg')">
+                            <img src="g3.jpg" alt="童年影像">
+                        </div>
+                        <div class="card-content">
+                            <h3>童年影像</h3>
+                            <p>大院里的纯白年代。</p>
+                            <span class="card-link" onclick="goToPage('gallery_childhood.html')">查看影像 >></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 日记节点 -->
+                <div class="story-node left">
+                    <div class="node-dot"></div>
+                    <div class="node-card">
+                        <div class="card-content">
+                            <h3>秘密日记 · Part 1</h3>
+                            <p>"高城的日记" & "高雀的日记"</p>
+                            <span class="card-link" onclick="goToPage('riji_part1.html')">阅读档案 >></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== 1998 重要年份 ===== -->
+                <div class="year-marker important">
+                    <span class="year">1998</span>
+                    <span class="year-event">高城进入军校</span>
+                </div>
+
+                <!-- 1998 故事节点 - 已修复结构 -->
+                <div class="story-node right">
+                    <div class="node-dot"></div>
+                    <div class="node-card">
+                        <div class="card-image" onclick="openImageModal('g11.jpg')">
+                            <img src="g11.jpg" alt="我哥从不回头">
+                        </div>
+                        <div class="card-content">
+                            <h3>秘密日记·part2</h3>
+                            <p>埋藏在八月的、少女的眼泪。</p>
+                            <span class="card-link" onclick="goToPage('story_huitou.html')">阅读故事 >></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 毕业节点 -->
+                <div class="story-node left">
+                    <div class="node-dot"></div>
+                    <div class="node-card">
+                        <div class="card-image" onclick="openImageModal('g10.jpg')">
+                            <img src="g10.jpg" alt="毕业节点">
+                        </div>
+                        <div class="card-content">
+                            <h3>秘密日记·part3</h3>
+                            <p>少女心事</p>
+                            <span class="card-link" onclick="goToPage('story_riji3.html')">阅读故事 >></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 距离 -->
+                <div class="story-node right">
+                    <div class="node-dot"></div>
+                    <div class="node-card">
+                        <div class="card-content">
+                            <h3>2002 · 距离</h3>
+                            <p>高雀进入大学。</p>
+                            <span class="card-link" onclick="goToPage('story_距离.html')">阅读故事 >></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== 2003 重要年份 ===== -->
+                <div class="year-marker important">
+                    <span class="year">2003</span>
+                    <span class="year-event">高城任七连连长 / 高雀入伍</span>
+                </div>
+
+                <!-- 日光故事 - 已修复结构 -->
+                <div class="story-node right">
+                    <div class="node-dot"></div>
+                    <div class="node-card">
+                        <div class="card-image" onclick="openImageModal('g5.jpg')">
+                            <img src="g5.jpg" alt="你比日光耀眼">
+                        </div>
+                        <div class="card-content">
+                            <h3>"你比日光耀眼"</h3>
+                            <p>意气风发的岁月。</p>
+                            <span class="card-link" onclick="goToPage('story_日光.html')">阅读故事 >></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== 2006 ===== -->
+                <div class="year-marker">
+                    <span class="year">2006</span>
+                    <span class="year-event">七连解散 / 高城任侦察营副营长</span>
+                </div>
+
+
+                <!-- ===== 2007 血舌 - 重要节点 ===== -->
+                <div class="year-marker important">
+                    <span class="year">2007</span>
+                    <span class="year-event">血舌 / 边境军演意外</span>
+                </div>
+
+                <div class="story-node center major">
+                    <div class="node-dot"></div>
+                    <div class="node-card">
+                        <div class="card-image" onclick="openImageModal('hero.jpg')">
+                            <img src="hero.jpg" alt="血舌">
+                        </div>
+                        <div class="card-content" style="text-align: center;">
+                            <h3 class="blood-title">血 舌</h3>
+                            <p>左颈重伤 / 调任文工团</p>
+                            <p class="quote-text">"在这情天恨海里..."</p>
+                            <span class="card-link" onclick="goToPage('xueshe.html')">阅读完整档案 >></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== 2008 ===== -->
+                <div class="year-marker">
+                    <span class="year">2008</span>
+                    <span class="year-event">高雀纹身 / 血色的雀</span>
+                </div>
+
+                <!-- 2009 故事1：夜会 -->
+                <div class="story-node left">
+                    <div class="node-dot"></div>
+                    <div class="node-card">
+                        <div class="card-content">
+                            <h3>夜会</h3>
+                            <p>我们会堕入地狱，永世不得超生。</p>
+                            <span class="card-link" onclick="goToPage('story_yehui.html')">阅读故事 >></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="story-node right">
+                    <div class="node-dot"></div>
+                    <div class="node-card">
+                        <div class="card-image" onclick="openImageModal('g8.jpg')">
+                            <img src="g8.jpg" alt="血雀刺青">
+                        </div>
+                        <div class="card-content">
+                            <h3>关于高女士和她的一切</h3>
+                            <p>令人讨厌的女人。</p>
+                            <span class="card-link" onclick="goToPage('story_gaonvshi.html')">阅读故事 >></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== 2010 ===== -->
+                <div class="year-marker">
+                    <span class="year">2010</span>
+                    <span class="year-event">双喜临门</span>
+                </div>
+
+                <!-- 2010 故事1：合身 -->
+                <div class="story-node left">
+                    <div class="node-dot"></div>
+                    <div class="node-card">
+                        <div class="card-content">
+                            <h3>合身</h3>
+                            <p>一个即将破碎的肥皂泡</p>
+                            <span class="card-link" onclick="goToPage('story_heshen.html')">阅读故事 >></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 2010 故事2：双喜临门 -->
+                <div class="story-node right">
+                    <div class="node-dot"></div>
+                    <div class="node-card">
+                        <div class="card-content">
+                            <h3>双喜临门</h3>
+                            <p>也许有一天我会为了他们付出代价，那总归不是今天的事。</p>
+                            <span class="card-link" onclick="goToPage('story_shuangxi.html')">阅读故事 >></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 2010 故事3：戒指 -->
+                <div class="story-node left">
+                    <div class="node-dot"></div>
+                    <div class="node-card">
+                        <div class="card-content">
+                            <h3>戒指</h3>
+                            <p>关于婚姻、戒指与易拉罐环的故事</p>
+                            <span class="card-link" onclick="goToPage('story_jiezhi.html')">阅读故事 >></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== 2011 ===== -->
+                <div class="year-marker important">
+                    <span class="year">2011</span>
+                    <span class="year-event">幸福美满的两家人……吗？</span>
+                </div>
+                <div class="story-node right">
+                    <div class="node-dot"></div>
+                    <div class="node-card">
+                        <div class="card-content">
+                            <h3>硬币落地之前</h3>
+                            <p>命运在旋转。</p>
+                            <span class="card-link" onclick="goToPage('story_yingbi.html')">阅读故事 >></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="story-node left">
+                    <div class="node-dot"></div>
+                    <div class="node-card">
+                        <div class="card-content">
+                            <h3>错轨</h3>
+                            <p>你我，你和我之间，还有高城，要怎么做，才能把这错轨的人生恢复正常？</p>
+                            <span class="card-link" onclick="goToPage('cuogui.html')">阅读故事 >></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 2011 故事3：之间 -->
+                <div class="story-node rigt">
+                    <div class="node-dot"></div>
+                    <div class="node-card">
+                        <div class="card-content">
+                            <h3>之间</h3>
+                            <p>关于婚姻、戒指与易拉罐环的故事</p>
+                            <span class="card-link" onclick="goToPage('story_jiezhi.html')">阅读故事 >></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- ===== 2012 ===== -->
+                <div class="year-marker">
+                    <span class="year">2012</span>
+                    <span class="year-event">妹妹、情人、妻子、母亲。</span>
+                </div>
+
+                <div class="story-node left">
+                    <div class="node-dot"></div>
+                    <div class="node-card">
+                        <div class="card-image" onclick="openImageModal('g7.jpg')">
+                            <img src="g7.jpg" alt="云南">
+                        </div>
+                        <div class="card-content">
+                            <h3>步下红毯之后</h3>
+                            <p>谁知道幸福是从哪里开始的?</p>
+                            <span class="card-link" onclick="goToPage('story_buxiahongtan.html')">阅读故事 >></span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- ===== 2014 ===== -->
+                <div class="year-marker">
+                    <span class="year">2014</span>
+                    <span class="year-event">永不结束的四人牌局</span>
+                </div>
+
+                <div class="story-node right">
+                    <div class="node-dot"></div>
+                    <div class="node-card">
+                        <div class="card-image" onclick="openImageModal('g1.jpg')">
+                            <img src="g1.jpg" alt="掸邦之夜">
+                        </div>
+                        <div class="card-content">
+                            <h3>掸邦之夜</h3>
+                            <p>秘密。</p>
+                            <span class="card-link" onclick="goToPage('shanbangzhiye.html')">阅读故事 >></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 时间轴结束 -->
+                <div class="timeline-end">
+                    <span class="end-line"></span>
+                    <span class="end-text">THE END IS THE BEGINNING</span>
+                    <span class="end-line"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== 视图B: 人物档案 ==================== -->
+        <div id="profiles-view" class="view-section">
+            <div class="back-home" onclick="backToHome()">← RETURN</div>
+            
+            <div class="profiles-header">
+                <h2>人 物 档 案</h2>
+                <p>CLASSIFIED PERSONNEL FILES</p>
+            </div>
+
+            <div class="dual-profile-container">
+                <!-- 高雀档案 -->
+                <div class="char-column" onclick="goToPage('profile_gq.html')">
+                    <div class="profile-card gq-card">
+                        <div class="profile-photo">
+                            <img src="profile_gq.jpg" alt="高雀">
+                            <div class="photo-overlay">
+                                <span class="codename">雌鹰</span>
+                            </div>
+                        </div>
+                        <div class="profile-info">
+                            <h1 class="matisse-font">高 雀</h1>
+                            <p class="profile-code">FILE NO. 8308-Q · 绝密</p>
+                            <div class="profile-details">
+                                <span class="label">出生</span>
+                                <span class="value">1983年8月14日</span>
+                                <span class="label">军衔</span>
+                                <span class="value">上尉（已退役）</span>
+                                <span class="label">隶属</span>
+                                <span class="value">84集团军特种连 → 文工团</span>
+                                <span class="label">特征</span>
+                                <span class="value">左颈血雀纹身，覆盖伤疤</span>
+                            </div>
+                            <div class="profile-tags">
+                                <span>野性</span>
+                                <span>骄傲</span>
+                                <span>冷感</span>
+                                <span>锋利</span>
+                                <span>孤独</span>
+                            </div>
+                        </div>
+                        <div class="profile-quote">
+                            <p>"雀是伪装，鹰是骨血。她学会了把期待缩小、把渴望折叠，让一切敏感细腻的心事淹没在大大咧咧的笑声中。"</p>
+                        </div>
+                        <div class="enter-profile">点击调阅完整档案 >></div>
+                    </div>
+                </div>
+
+                <!-- 分隔线 -->
+                <div class="divider-line"></div>
+
+                <!-- 高城档案 -->
+                <div class="char-column" onclick="goToPage('profile_gc.html')">
+                    <div class="profile-card gc-card">
+                        <div class="profile-photo">
+                            <img src="profile_gc.jpg" alt="高城">
+                            <div class="photo-overlay">
+                                <span class="codename">虎</span>
+                            </div>
+                        </div>
+                        <div class="profile-info">
+                            <h1 class="matisse-font">高 城</h1>
+                            <p class="profile-code gc-code">FILE NO. 8008-C · 绝密</p>
+                            <div class="profile-details">
+                                <span class="label">出生</span>
+                                <span class="value">1980年8月1日</span>
+                                <span class="label">军衔</span>
+                                <span class="value">上尉 → 中校</span>
+                                <span class="label">隶属</span>
+                                <span class="value">钢七连 → 侦察营</span>
+                                <span class="label">特征</span>
+                                <span class="value">右颧骨贯穿疤痕</span>
+                            </div>
+                            <div class="profile-tags gc-tags">
+                                <span>热烈</span>
+                                <span>坚毅</span>
+                                <span>骄傲</span>
+                                <span>有趣</span>
+                                <span>可靠</span>
+                            </div>
+                        </div>
+                        <div class="profile-quote">
+                            <p>"高城是海上生明日，是一切朝气、希望，肆意泼洒的汗水和笑声。跟着他就什么都不怕，看着他天就永远不会黑。"</p>
+                        </div>
+                        <div class="enter-profile gc-enter">点击调阅完整档案 >></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 关系面板 -->
+            <div class="relationship-panel">
+                <div class="relationship-card">
+                    <h3>关系档案 · 共命鸟</h3>
+                    
+                    <div class="relationship-timeline">
+                        <div class="rel-item">
+                            <div class="period">1983-2001</div>
+                            <div class="desc">高城扮演着她的哥哥、她的父母、她的朋友……可以说，是一切。</div>
+                        </div>
+                        <div class="rel-item">
+                            <div class="period">2001-2003</div>
+                            <div class="desc">埋葬在北京初秋的少女心事。</div>
+                        </div>
+                        <div class="rel-item">
+                            <div class="period">2003-2007</div>
+                            <div class="desc">高雀参军进入高城所在军区，他们曾有过并肩而立的时刻。</div>
+                        </div>
+                        <div class="rel-item highlight">
+                            <div class="period">2007年末</div>
+                            <div class="desc">缅甸军演意外，高雀险些丧命，高城单方面决定调离高雀</div>
+                        </div>
+                        <div class="rel-item">
+                            <div class="period">2008-2011</div>
+                            <div class="desc">高雀被调入文工团，错误的轨道。</div>
+                        </div>
+                        <div class="rel-item">
+                            <div class="period">2011至今</div>
+                            <div class="desc">婚后共存：双双政治联姻，各自有家庭，依然保持肉体与精神的双重联系</div>
+                        </div>
+                    </div>
+
+                    <div class="interaction-modes">
+                        <div class="mode-item">
+                            <div class="mode-label">日常</div>
+                            <div class="mode-desc">高城管控一切，高雀离不开也不想离开</div>
+                        </div>
+                        <div class="mode-item">
+                            <div class="mode-label">性事</div>
+                            <div class="mode-desc">纯粹的生理性吸引，看到彼此就想和对方上床</div>
+                        </div>
+                        <div class="mode-item">
+                            <div class="mode-label">冷战</div>
+                            <div class="mode-desc">高城唠叨琐事，高雀冷处理</div>
+                        </div>
+                        <div class="mode-item">
+                            <div class="mode-label">禁忌</div>
+                            <div class="mode-desc">"你是问小诚吗……？诚实、诚信、诚恳的意思。"</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== 视图C: 画廊 ==================== -->
+        <div id="gallery-view" class="view-section">
+            <div class="back-home" onclick="backToHome()">← RETURN</div>
+            <div class="gallery-header">
+                <h2>影像画廊</h2>
+                <p>VISUAL ARCHIVE · 机密影像资料库</p>
+                
+                <!-- 画廊筛选栏 -->
+                <div class="gallery-filters">
+                    <button class="filter-btn active" data-filter="all">全部档案</button>
+                    <button class="filter-btn" data-filter="character">人物特写</button>
+                    <button class="filter-btn" data-filter="scene">场景记录</button>
+                    <button class="filter-btn" data-filter="costume">服装造型</button>
+                </div>
+            </div>
+            
+            <!-- 精选展示区 -->
+            <div class="gallery-featured">
+                <div class="featured-label">
+                    <span class="label-line"></span>
+                    <span class="label-text">◆ 核心档案 ◆</span>
+                    <span class="label-line"></span>
+                </div>
+                <div class="featured-grid" id="featured-gallery">
+                    <!-- 由 JS 动态生成 -->
+                </div>
+            </div>
+            
+            <!-- 主画廊区 -->
+            <div class="gallery-main">
+                <div class="gallery-label">
+                    <span class="label-line"></span>
+                    <span class="label-text">◆ 影像资料 ◆</span>
+                    <span class="label-line"></span>
+                </div>
+                <div class="gallery-masonry" id="dynamic-gallery">
+                    <!-- 由 JS 动态生成 -->
+                </div>
+            </div>
+        </div>
+
+    <!-- ==================== Modal 弹窗 ==================== -->
+    <div id="modal" class="modal">
+        <div class="modal-close" onclick="closeModal()">×</div>
+        <div class="modal-content">
+            <img id="modal-img" src="">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

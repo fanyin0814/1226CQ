@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>档案阅读 | G & Q</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 独立的阅读页样式，写在这里方便管理 */
+        body.reading-mode {
+            background-color: #f4f4f4; /* 稍微暖一点的纸张色 */
+            display: block; /*不仅是flex布局 */
+            padding: 0;
+        }
+
+        /* 顶部导航条 */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: rgba(244, 244, 244, 0.95);
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            z-index: 100;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: #8a0303;
+            font-family: 'Matisse', serif;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            letter-spacing: 2px;
+        }
+
+        /* 文章主体容器 */
+        .article-container {
+            max-width: 800px; /* 限制宽度，防止一行字太长读着累 */
+            margin: 100px auto 100px auto; /* 上下留白 */
+            padding: 40px;
+            background: #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        }
+
+        /* 标题样式 */
+        h1.article-title {
+            font-family: 'Matisse', serif;
+            font-size: 3rem;
+            color: #000;
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #8a0303;
+            padding-bottom: 20px;
+        }
+
+        .article-meta {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 60px;
+        }
+
+        /* 正文样式 */
+        .article-content {
+            font-family: 'Noto Serif SC', serif; /* 用宋体读长文最舒服 */
+            font-size: 1.2rem;
+            line-height: 2; /* 行间距要大 */
+            color: #333;
+            text-align: justify; /* 两端对齐 */
+        }
+
+        .article-content p {
+            margin-bottom: 30px; /* 段落间距 */
+            text-indent: 2em; /* 首行缩进 */
+        }
+        
+        /* 手机适配 */
+        @media (max-width: 768px) {
+            .article-container {
+                padding: 20px;
+                margin-top: 80px;
+            }
+            h1.article-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="reading-mode">
+
+    <nav class="nav-bar">
+        <a href="index.html" class="back-btn">← 返回绝密档案</a>
+    </nav>
+
+    <article class="article-container">
+        <h1 class="article-title">这里写文章标题</h1>
+        <p class="article-meta">2007年冬 · 缅甸边界 · 绝密</p>
+
+        <div class="article-content">
+            <p>这里是第一段内容。请把你的小说内容粘贴到这里。每一段话都要包在 p 标签里。</p>
+            
+            <p>这是第二段内容。高雀望着高城迷彩作训服上的肩章，现在两毛二，很快就是两毛三...</p>
+            
+            <p>（以此类推，把Word里的内容贴进来）</p>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px; color: #ccc;">
+            ***
+        </div>
+    </article>
+
+</body>
+</html>

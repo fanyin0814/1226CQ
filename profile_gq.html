@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高雀 | 核心档案 NO.8308-Q</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            background-color: #f4f4f4; 
+            color: #333;
+            font-family: 'Noto Serif SC', serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .dossier-container {
+            max-width: 950px;
+            margin: 60px auto;
+            background: #fff;
+            padding: 0;
+            box-shadow: 0 0 40px rgba(0,0,0,0.15);
+            border-top: 6px solid #8a0303;
+            position: relative;
+        }
+
+        .top-secret-mark {
+            position: absolute;
+            top: 25px; right: 35px;
+            border: 3px solid #8a0303;
+            color: #8a0303;
+            padding: 8px 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            transform: rotate(-8deg);
+            opacity: 0.9;
+            letter-spacing: 3px;
+            font-weight: bold;
+        }
+
+        .dossier-header {
+            display: flex;
+            padding: 40px;
+            border-bottom: 2px dashed #ddd;
+            background: linear-gradient(to bottom, #fafafa, #fff);
+        }
+
+        .dossier-photo {
+            width: 200px;
+            height: 260px;
+            flex-shrink: 0;
+            background: #000;
+            margin-right: 40px;
+            border: 1px solid #ccc;
+            padding: 6px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .dossier-photo img {
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover;
+            filter: saturate(0.85) contrast(1.05);
+        }
+
+        .dossier-info {
+            flex: 1;
+        }
+
+        .dossier-info h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 3.5rem;
+            margin: 0 0 15px 0;
+            color: #1a1a1a;
+            letter-spacing: 0.5rem;
+            font-weight: 900;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 12px 20px;
+            margin-top: 20px;
+        }
+
+        .info-label { 
+            color: #8a0303; 
+            font-weight: bold; 
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .info-value {
+            color: #444;
+            font-size: 1rem;
+        }
+
+        .dossier-body {
+            padding: 40px;
+        }
+
+        .dossier-section { 
+            margin-bottom: 45px; 
+        }
+
+        .section-title {
+            background: linear-gradient(90deg, #1a1a1a, #333);
+            color: #fff;
+            display: inline-block;
+            padding: 8px 20px;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .text-content {
+            font-size: 1.05rem;
+            line-height: 2;
+            color: #444;
+            text-align: justify;
+        }
+
+        .text-content p {
+            margin-bottom: 15px;
+        }
+
+        .highlight-text {
+            color: #8a0303;
+            font-weight: bold;
+        }
+
+        /* === 悬停显示图片效果 === */
+        .item-hover {
+            color: #8a0303;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            border-bottom: 1px dashed #8a0303;
+            transition: all 0.3s ease;
+        }
+
+        .item-hover:hover {
+            color: #5a0202;
+            background: rgba(138, 3, 3, 0.1);
+        }
+
+        .item-tooltip {
+            position: fixed;
+            z-index: 9999;
+            background: #fff;
+            border: 2px solid #8a0303;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            padding: 8px;
+            display: none;
+            max-width: 280px;
+            pointer-events: none;
+        }
+
+        .item-tooltip img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .item-tooltip .tooltip-caption {
+            font-size: 0.8rem;
+            color: #666;
+            text-align: center;
+            padding: 8px 5px 5px;
+            background: #fafafa;
+            border-top: 1px solid #eee;
+        }
+
+        /* === 衣柜展示区 === */
+        .wardrobe-section {
+            background: #fafafa;
+            padding: 40px;
+            border-top: 1px solid #eee;
+        }
+
+        .wardrobe-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .wardrobe-title::before,
+        .wardrobe-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #8a0303, transparent);
+        }
+
+        .wardrobe-subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 30px;
+        }
+
+        .wardrobe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .wardrobe-item {
+            background: #fff;
+            border: 2px solid #eee;
+            padding: 25px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wardrobe-item::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: #8a0303;
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .wardrobe-item:hover {
+            border-color: #8a0303;
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(138,3,3,0.15);
+        }
+
+        .wardrobe-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .wardrobe-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            filter: grayscale(30%);
+            transition: filter 0.3s;
+        }
+
+        .wardrobe-item:hover .wardrobe-icon {
+            filter: grayscale(0%);
+        }
+
+        .wardrobe-name {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .wardrobe-count {
+            font-size: 0.75rem;
+            color: #999;
+            font-family: 'Courier New', monospace;
+        }
+
+        .wardrobe-period {
+            font-size: 0.7rem;
+            color: #8a0303;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed #eee;
+        }
+
+        /* === 衣柜弹窗 === */
+        .wardrobe-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.92);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .wardrobe-modal.active {
+            display: flex;
+        }
+
+        .wardrobe-modal-content {
+            background: #fff;
+            max-width: 1000px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlide 0.4s ease;
+        }
+
+        @keyframes modalSlide {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .wardrobe-modal-header {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 25px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .wardrobe-modal-header h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.5rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .wardrobe-modal-header h2 .icon {
+            font-size: 1.8rem;
+        }
+
+        .wardrobe-modal-close {
+            position: absolute;
+            top: 20px; right: 25px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #fff;
+            transition: all 0.3s;
+            line-height: 1;
+        }
+
+        .wardrobe-modal-close:hover {
+            color: #8a0303;
+            transform: rotate(90deg);
+        }
+
+        .wardrobe-modal-body {
+            padding: 30px;
+        }
+
+        .wardrobe-description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .wardrobe-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .wardrobe-gallery-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid #eee;
+        }
+
+        .wardrobe-gallery-item img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: all 0.4s;
+            filter: grayscale(20%);
+        }
+
+        .wardrobe-gallery-item:hover img {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+        }
+
+        .wardrobe-gallery-item .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0; right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: #fff;
+            padding: 40px 15px 15px;
+            font-size: 0.85rem;
+        }
+
+        /* === 底部 === */
+        .evidence-section {
+            padding: 40px;
+            background: #f5f5f5;
+            border-top: 1px solid #eee;
+        }
+
+        .evidence-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .evidence-img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+            filter: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .evidence-img:hover { 
+            filter: none; 
+            transform: scale(1.03);
+            border-color: #8a0303;
+        }
+
+        /* === 导航 === */
+        .back-nav {
+            position: fixed; 
+            top: 25px; 
+            left: 25px;
+            z-index: 100;
+        }
+
+        .back-btn {
+            text-decoration: none; 
+            color: #333; 
+            font-weight: bold;
+            font-family: 'Noto Serif SC', serif; 
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.9);
+            border: 1px solid #ddd;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover { 
+            color: #8a0303;
+            border-color: #8a0303;
+        }
+
+        /* === 图片弹窗 === */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 20000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-modal.active {
+            display: flex;
+        }
+
+        .image-modal img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .image-modal-close {
+            position: fixed;
+            top: 30px; right: 40px;
+            font-size: 3rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* === 时间线样式 === */
+        .timeline-item {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 18px;
+            border-left: 2px solid #e0e0e0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: #8a0303;
+            border-radius: 50%;
+        }
+
+        .timeline-item.highlight {
+            border-left-color: #8a0303;
+        }
+
+        .timeline-item.highlight::before {
+            background: #4B5320;
+            box-shadow: 0 0 0 3px rgba(75, 83, 32, 0.2);
+        }
+
+        .timeline-year {
+            font-weight: bold;
+            color: #8a0303;
+            font-family: 'Courier New', monospace;
+        }
+
+        @media (max-width: 768px) {
+            .dossier-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .dossier-photo {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            .evidence-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 悬停图片提示框 -->
+    <div id="itemTooltip" class="item-tooltip">
+        <img id="tooltipImg" src="" alt="">
+        <div class="tooltip-caption" id="tooltipCaption"></div>
+    </div>
+
+    <nav class="back-nav">
+        <a href="index.html" class="back-btn">← 返回主档案库</a>
+    </nav>
+
+    <div class="dossier-container">
+        <div class="top-secret-mark">CLASSIFIED / 绝密</div>
+
+        <div class="dossier-header">
+            <div class="dossier-photo">
+                <img src="profile_gq.jpg" alt="高雀">
+            </div>
+            <div class="dossier-info">
+                <h1>高 雀</h1>
+                <div class="info-grid">
+                    <span class="info-label">出生:</span>
+                    <span class="info-value">1983年8月14日</span>
+                    <span class="info-label">隶属:</span>
+                    <span class="info-value">原84集团军特种连 / 现自由舞者</span>
+                    <span class="info-label">军衔:</span>
+                    <span class="info-value">陆军上尉，后转业至总政文工团，任民族舞首席</span>
+                    <span class="info-label">身体特征:</span>
+                    <span class="info-value">169cm / 60kg / 精瘦肌肉型。左颈部贯穿伤遗留瘢痕，以纹身覆盖</span>
+                    <span class="info-label">主要人物关系:</span>
+                    <span class="info-value">兄长-高城，丈夫-陈佳书，女儿-陈胜雪（小诚）</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="dossier-body">
+            <div class="dossier-section">
+                <div class="section-title">/// 面部特征锚点</div>
+                <div class="text-content">
+                    <p>下颌角明显的方圆脸，笑起来只有<span class="highlight-text">左边酒窝</span>。开扇内双，骨相明显，冷感强。鼻梁有一个突出的小节，说是美人都会有这样的凸起，但或许也是她性格中坚硬部分的某种隐喻。</p>
+                    <p><span class="highlight-text">眸色清透棕黑</span>，与她的兄长一样，在阳光下炫出琥珀色的明亮，隐约有某种猫科动物的特点。</p>
+                </div>
+            </div>
+
+            <div class="dossier-section">
+                <div class="section-title">/// 人物气质特点</div>
+                <div class="text-content">
+                    <p>高家的小女儿，在"雀"这个温顺的名字之下，隐藏的是<span class="highlight-text">"雌鹰"</span>的本质。她像雾一样难以捉摸，又像风一样无法被禁锢。</p>
+                    <p>她是军人，拥有极高的狩猎直觉和生存智慧；她也是舞者，骨相清晰，美得具有攻击性。她喜爱蓝色眼影、夸张的耳环与隐秘的纹身，或许是一种迟来的、无声的叛逆宣言。</p>
+                    <p>她骨相好，气质冶然，笑起来时脸上的阴影更加深重，显得五官愈发清晰。美人的美就是清晰的，只不过过度的清晰会显得不像这个世界的人，换言之是郁森森的，像幽灵，或者<span class="highlight-text">美杜莎</span>。</p>
+                </div>
+            </div>
+
+            <div class="dossier-section">
+                <div class="section-title">/// 关键时间节点</div>
+                <div class="text-content">
+                    <div class="timeline-item">
+                        <span class="timeline-year">2003</span> — 20岁入伍，进入84集团军特种连，与高城同一军区
+                    </div>
+                    <div class="timeline-item highlight">
+                        <span class="timeline-year">2007</span> — 缅甸边境军演意外，左颈重伤，险些丧命。被高城单方面决定调离作战部队
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2008</span> — 在伤疤处纹上血色雀鸟。"荣耀的勋章，还是耻辱的印记？"
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2009</span> — 相亲、订婚
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2011</span> — 政治联姻，嫁给陈佳书
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2012</span> — 产下一女，陈胜雪，小名"小诚"
+                    </div>
+                </div>
+            </div>
+
+            <div class="dossier-section">
+                <div class="section-title">/// 随身小物</div>
+                <div class="text-content">
+                    <p>随身携带军官证、<span class="item-hover" data-img="images/gq_fire.jpg" data-caption="高雀喜欢漂亮的东西，宝石一样的">打火机和烟盒</span>，喜欢抽煊赫门和钻石荷花；订婚戒指是一枚<span class="item-hover" data-img="images/cartier-ring.jpg" data-caption="And after all this time, you're still the one llove">卡地亚铂金素戒</span>，颇为低调，在排练时与和高城相处时会摘下。</p>
+                    <p>左腕常年佩戴一枚<span class="item-hover" data-img="images/longines-watch.jpg" data-caption="很难买到的漂亮颜色，高城知道妹妹喜欢蓝色">蓝色浪琴机械表</span>，表带真皮棕色，据悉为兄长所赠生日礼物；<span class="item-hover" data-img="images/glasses.jpg" data-caption="高雀不喜欢戴着眼镜，说是，喜欢活在朦胧里">金丝半框眼镜</span>一副，200度近视，日常不佩戴，仅阅读时使用；<span class="item-hover" data-img="images/hermes-wallet.jpg" data-caption="总有追求者喜欢送这些东西，高雀随手挑了个最顺眼的">香奈儿钱包</span>，夹层内有与高城在年少时的合照。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 衣柜展示区 -->
+        <div class="wardrobe-section">
+            <h2 class="wardrobe-title">形象档案库</h2>
+            <p class="wardrobe-subtitle">点击查看不同时期的着装稿件</p>
+            
+            <div class="wardrobe-grid">
+                <div class="wardrobe-item" onclick="openWardrobe('military')">
+                    <div class="wardrobe-icon">🎖️</div>
+                    <div class="wardrobe-name">军装</div>
+                    <div class="wardrobe-count">作战服 / 军常服 / 礼服 / 军LO</div>
+                    <div class="wardrobe-period">2003-2009</div>
+                </div>
+            
+                <div class="wardrobe-item" onclick="openWardrobe('casual')">
+                    <div class="wardrobe-icon">👚</div>
+                    <div class="wardrobe-name">常服</div>
+                    <div class="wardrobe-count">日常穿搭 / 私服 / Y2K</div>
+                    <div class="wardrobe-period">全时期</div>
+                </div>
+                
+                <div class="wardrobe-item" onclick="openWardrobe('formal')">
+                    <div class="wardrobe-icon">👗</div>
+                    <div class="wardrobe-name">礼服</div>
+                    <div class="wardrobe-count">翠绿毛茸茸 / 宝蓝民族风 / 旗袍国潮 / 孔雀绿大露背</div>
+                    <div class="wardrobe-period">2008-至今</div>
+                </div>
+                
+                <div class="wardrobe-item" onclick="openWardrobe('tattoo')">
+                    <div class="wardrobe-icon">🩸</div>
+                    <div class="wardrobe-name">血雀纹身</div>
+                    <div class="wardrobe-count">特写 / 设计稿</div>
+                    <div class="wardrobe-period">2008至今</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 附加影像 -->
+        <div class="evidence-section">
+            <div class="section-title">/// 附加影像资料</div>
+            <div class="evidence-gallery">
+                <img src="g9.jpg" class="evidence-img" alt="影像1" onclick="openImage(this.src)">
+                <img src="g27.jpg" class="evidence-img" alt="影像2" onclick="openImage(this.src)">
+                <img src="g28.jpg" class="evidence-img" alt="影像3" onclick="openImage(this.src)">
+                <img src="g12.jpg" class="evidence-img" alt="影像4" onclick="openImage(this.src)">
+                <img src="g21.jpg" class="evidence-img" alt="影像5" onclick="openImage(this.src)">
+                <img src="g29.jpg" class="evidence-img" alt="影像6" onclick="openImage(this.src)">
+                <img src="g30.jpg" class="evidence-img" alt="影像7" onclick="openImage(this.src)">
+                <img src="g32.jpg" class="evidence-img" alt="影像8" onclick="openImage(this.src)">
+            </div>
+        </div>
+    </div>
+
+    <!-- 衣柜弹窗 -->
+    <div id="wardrobeModal" class="wardrobe-modal">
+        <div class="wardrobe-modal-content">
+            <div class="wardrobe-modal-header">
+                <h2><span class="icon" id="modalIcon">🎖️</span><span id="modalTitle">军装</span></h2>
+                <span class="wardrobe-modal-close" onclick="closeWardrobe()">×</span>
+            </div>
+            <div class="wardrobe-modal-body">
+                <p class="wardrobe-description" id="modalDesc">描述内容</p>
+                <div class="wardrobe-gallery" id="modalGallery">
+                    <!-- 动态生成 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 图片弹窗 -->
+    <div id="imageModal" class="image-modal" onclick="closeImage()">
+        <span class="image-modal-close">×</span>
+        <img id="imageModalImg" src="">
+    </div>
+
+    <script>
+        // 衣柜数据
+        const wardrobeData = {
+            military: {
+                icon: '🎖️',
+                title: '军装系列',
+                desc: '自2003年进入PLA，高雀作为84集团军的陆军，穿过各种军装。从日常训练的迷彩作战服，到重要场合的军常服、礼服，从2003年的87式军装。她在军装下的英姿飒爽，却总是在她哥哥面前温软下来。',
+                images: [
+                    { src: 'g14.jpg', caption: '衬衫 · 训练作战' },
+                    { src: 'g13.jpg', caption: '夏常服 · 交流日常' },
+                    { src: 'g15.jpg', caption: '礼服 · 表彰大会' },
+                    { src: 'g26.jpg', caption: '军LO · 非典型军装，不太考究' }
+                ]
+            },
+            casual: {
+                icon: '👚',
+                title: '常服系列',
+                desc: '日常生活中的高雀，穿着简洁利落，偏爱黑白灰等冷色调。她的衣品如她的人——表面简单，细节处透着不经意的精致。偶尔的蓝绿色眼影和金属大耳环，是她隐秘的叛逆。',
+                images: [
+                    { src: 'g20.jpg', caption: '日常 · 黑色羊绒毛衣配驼色风衣，垂感阔腿裤' },
+                    { src: 'g18.jpg', caption: '休闲 · 文艺工作者' },
+                    { src: 'g19.jpg', caption: '外出 · 高干子弟的纨绔味' },
+                    { src: 'g31.jpg', caption: 'Y2K · 平行世界的电台主持人' }
+                ]
+            },
+            formal: {
+                icon: '👗',
+                title: '礼服系列',
+                desc: '退役后的高雀出入各类场合，从舞团首演到军区家宴。她偏爱深邃的冷色调——翠绿、孔雀蓝、墨绿——身上兼有丛林与深海。露背款式居多，颈侧的血雀纹身若隐若现，是她从不遮掩的勋章。妆容浓烈，蓝绿烟熏眼影配金属大耳环，冷感与野性并存。',
+                images: [
+                    { src: 'g22.jpg', caption: '翠绿毛茸茸 · 翠绿丝绒长裙配羽毛披肩，敛翅的孔雀' },
+                    { src: 'g23.jpg', caption: '宝蓝民族风 · 宝蓝缎面吊带裙，红色领巾系在颈间' },
+                    { src: 'g24.jpg', caption: '旗袍国潮风 · 墨绿高开叉旗袍，翡翠腰封' },
+                    { src: 'g25.jpg', caption: '孔雀绿大露背 · 高城最爱的这套，脊背如纵身而去的隼' }
+                ]
+            },
+            tattoo: {
+                icon: '🩸',
+                title: '血雀纹身',
+                desc: '2008年，高雀退役后做的第一件事就是去纹身。在她左颈的伤疤处，纹了一只血色的雀鸟。军人无法纹身，因此这是她想了很久的事。她不怕纹身的针在肩颈处扎了几百几千下，她享受这种痛感。有两个版本的纹身设计，可选择适配画面的版本。',
+                images: [
+                    { src: 'gq_tattoo_1.jpg', caption: '血雀 · 图案设计稿（新版）' },
+                    { src: 'gq_tattoo_2.jpg', caption: '血雀 · 图案设计稿（旧版）' },
+                    { src: 'gq_tattoo_design.jpg', caption: '血雀 · 伤疤位置参考' }
+                ]
+            }
+        };
+
+        function openWardrobe(type) {
+            const data = wardrobeData[type];
+            if (!data) return;
+            
+            document.getElementById('modalIcon').textContent = data.icon;
+            document.getElementById('modalTitle').textContent = data.title;
+            document.getElementById('modalDesc').textContent = data.desc;
+            
+            const gallery = document.getElementById('modalGallery');
+            gallery.innerHTML = data.images.map(img => `
+                <div class="wardrobe-gallery-item" onclick="openImage('${img.src}')">
+                    <img src="${img.src}" alt="${img.caption}" onerror="this.src='placeholder.jpg'">
+                    <div class="caption">${img.caption}</div>
+                </div>
+            `).join('');
+            
+            document.getElementById('wardrobeModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeWardrobe() {
+            document.getElementById('wardrobeModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function openImage(src) {
+            event.stopPropagation();
+            document.getElementById('imageModalImg').src = src;
+            document.getElementById('imageModal').classList.add('active');
+        }
+
+        function closeImage() {
+            document.getElementById('imageModal').classList.remove('active');
+        }
+
+        // ESC关闭
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeWardrobe();
+                closeImage();
+            }
+        });
+
+        // 点击外部关闭衣柜弹窗
+        document.getElementById('wardrobeModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeWardrobe();
+            }
+        });
+
+        // 悬停显示图片功能
+        const tooltip = document.getElementById('itemTooltip');
+        const tooltipImg = document.getElementById('tooltipImg');
+        const tooltipCaption = document.getElementById('tooltipCaption');
+
+        document.querySelectorAll('.item-hover').forEach(item => {
+            item.addEventListener('mouseenter', function(e) {
+                const imgSrc = this.getAttribute('data-img');
+                const caption = this.getAttribute('data-caption') || '';
+                
+                tooltipImg.src = imgSrc;
+                tooltipCaption.textContent = caption;
+                tooltip.style.display = 'block';
+                
+                positionTooltip(e);
+            });
+
+            item.addEventListener('mousemove', function(e) {
+                positionTooltip(e);
+            });
+
+            item.addEventListener('mouseleave', function() {
+                tooltip.style.display = 'none';
+            });
+        });
+
+        function positionTooltip(e) {
+            const x = e.clientX + 20;
+            const y = e.clientY + 20;
+            
+            // 防止超出屏幕右边界
+            if (x + 300 > window.innerWidth) {
+                tooltip.style.left = (e.clientX - 300) + 'px';
+            } else {
+                tooltip.style.left = x + 'px';
+            }
+            
+            // 防止超出屏幕下边界
+            if (y + 250 > window.innerHeight) {
+                tooltip.style.top = (e.clientY - 250) + 'px';
+            } else {
+                tooltip.style.top = y + 'px';
+            }
+        }
+    </script>
+
+</body>
+</html>
