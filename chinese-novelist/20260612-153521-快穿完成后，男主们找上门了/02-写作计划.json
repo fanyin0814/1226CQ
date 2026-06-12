@@ -1,0 +1,463 @@
+{
+  "version": 1,
+  "novelName": "快穿完成后，男主们找上门了",
+  "projectPath": "./chinese-novelist/20260612-153521-快穿完成后，男主们找上门了",
+  "totalChapters": 50,
+  "minWordsPerChapter": 3000,
+  "createdAt": "2026-06-12T15:47:58.344742",
+  "updatedAt": "2026-06-12T15:57:51.706162",
+  "status": "in_progress",
+  "writingMode": "serial",
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "title": "三天醒来，账户多了一个亿",
+      "filePath": "第01章-三天醒来，账户多了一个亿.md",
+      "status": "completed",
+      "wordCount": 3143,
+      "wordCountPass": true,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 2,
+      "title": "门外站着摄政王",
+      "filePath": "第02章-门外站着摄政王.md",
+      "status": "completed",
+      "wordCount": 3043,
+      "wordCountPass": true,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 3,
+      "title": "阳台上的末世雇佣兵",
+      "filePath": "第03章-阳台上的末世雇佣兵.md",
+      "status": "completed",
+      "wordCount": 3056,
+      "wordCountPass": true,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 4,
+      "title": "售后工单已生成",
+      "filePath": "第04章-售后工单已生成.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 5,
+      "title": "便利店里渡劫的仙君",
+      "filePath": "第05章-便利店里渡劫的仙君.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 6,
+      "title": "一封来自1926年的电报",
+      "filePath": "第06章-一封来自1926年的电报.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 7,
+      "title": "姐姐，你是不是把我忘了",
+      "filePath": "第07章-姐姐，你是不是把我忘了.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 8,
+      "title": "天道审计员与卖身契",
+      "filePath": "第08章-天道审计员与卖身契.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 9,
+      "title": "同居守则一百条",
+      "filePath": "第09章-同居守则一百条.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 10,
+      "title": "他的手开始透明",
+      "filePath": "第10章-他的手开始透明.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 11,
+      "title": "末世的习性改不掉",
+      "filePath": "第11章-末世的习性改不掉.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 12,
+      "title": "火场里找到的答案",
+      "filePath": "第12章-火场里找到的答案.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 13,
+      "title": "本王的归处只有一个",
+      "filePath": "第13章-本王的归处只有一个.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 14,
+      "title": "五个黑户",
+      "filePath": "第14章-五个黑户.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 15,
+      "title": "闭关三日的诵经声",
+      "filePath": "第15章-闭关三日的诵经声.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 16,
+      "title": "追来的本命剑",
+      "filePath": "第16章-追来的本命剑.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 17,
+      "title": "不存在的老照片",
+      "filePath": "第17章-不存在的老照片.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 18,
+      "title": "第九个世界，等你",
+      "filePath": "第18章-第九个世界，等你.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 19,
+      "title": "读不出来的执念值",
+      "filePath": "第19章-读不出来的执念值.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 20,
+      "title": "代码里的一行注释",
+      "filePath": "第20章-代码里的一行注释.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 21,
+      "title": "年审专员驾到",
+      "filePath": "第21章-年审专员驾到.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 22,
+      "title": "三百年工龄的前辈",
+      "filePath": "第22章-三百年工龄的前辈.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 23,
+      "title": "剧情污染之夜",
+      "filePath": "第23章-剧情污染之夜.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 24,
+      "title": "另一个晏宁",
+      "filePath": "第24章-另一个晏宁.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 25,
+      "title": "天道的病历",
+      "filePath": "第25章-天道的病历.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 26,
+      "title": "统子的秘密",
+      "filePath": "第26章-统子的秘密.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 27,
+      "title": "五件信物",
+      "filePath": "第27章-五件信物.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 28,
+      "title": "被删掉的第一个世界",
+      "filePath": "第28章-被删掉的第一个世界.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 29,
+      "title": "便利店行动",
+      "filePath": "第29章-便利店行动.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 30,
+      "title": "玻璃舱里的客服们",
+      "filePath": "第30章-玻璃舱里的客服们.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 31,
+      "title": "欢迎回家，初号机",
+      "filePath": "第31章-欢迎回家，初号机.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 32,
+      "title": "金色的血",
+      "filePath": "第32章-金色的血.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 33,
+      "title": "七十二小时倒计时",
+      "filePath": "第33章-七十二小时倒计时.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 34,
+      "title": "售后条款的漏洞",
+      "filePath": "第34章-售后条款的漏洞.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 35,
+      "title": "神格移交仪式",
+      "filePath": "第35章-神格移交仪式.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 36,
+      "title": "第一个世界的他",
+      "filePath": "第36章-第一个世界的他.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 37,
+      "title": "仲裁庭开庭",
+      "filePath": "第37章-仲裁庭开庭.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 38,
+      "title": "自愿交易，何来欺诈",
+      "filePath": "第38章-自愿交易，何来欺诈.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 39,
+      "title": "死人签的合同",
+      "filePath": "第39章-死人签的合同.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 40,
+      "title": "工龄走廊",
+      "filePath": "第40章-工龄走廊.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 41,
+      "title": "执念的终点是羁绊",
+      "filePath": "第41章-执念的终点是羁绊.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 42,
+      "title": "所有统子的妈妈",
+      "filePath": "第42章-所有统子的妈妈.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 43,
+      "title": "主脑掀桌",
+      "filePath": "第43章-主脑掀桌.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 44,
+      "title": "它偷走了所有真心",
+      "filePath": "第44章-它偷走了所有真心.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 45,
+      "title": "售后工单#000",
+      "filePath": "第45章-售后工单000.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 46,
+      "title": "亿万份被偷走的情感",
+      "filePath": "第46章-亿万份被偷走的情感.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 47,
+      "title": "情感不是能源",
+      "filePath": "第47章-情感不是能源.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 48,
+      "title": "这次换我送你回家",
+      "filePath": "第48章-这次换我送你回家.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 49,
+      "title": "仪器长鸣的乌龙",
+      "filePath": "第49章-仪器长鸣的乌龙.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    },
+    {
+      "chapterNumber": 50,
+      "title": "晏宁售后事务所",
+      "filePath": "第50章-晏宁售后事务所.md",
+      "status": "pending",
+      "wordCount": null,
+      "wordCountPass": null,
+      "retryCount": 0
+    }
+  ]
+}
